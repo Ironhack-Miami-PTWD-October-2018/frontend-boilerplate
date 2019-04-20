@@ -27,7 +27,7 @@ class Login extends Component {
             { withCredentials: true }, // FORCE axios to send cookies across domains
         )
         .then(response => {
-            // console.log("Login Page", response.data);
+            console.log("Login Page", response.data);
             const { userDoc } = response.data;
             // send "userDoc" to the App.js function that changes "currentUser"
             this.props.onUserChange(userDoc);
