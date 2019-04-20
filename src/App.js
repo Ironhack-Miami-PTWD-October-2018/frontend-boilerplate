@@ -4,6 +4,7 @@ import './App.css';
 import axios from "axios";
 
 import Signup from './components/user-pages/Signup';
+import Login from './components/user-pages/Login.js';
 
 class App extends Component {
   constructor(){
@@ -22,12 +23,11 @@ class App extends Component {
     });
   }
 
+  // this is the method for updating "currentUser"
+  // (must be defined in App.js since it's the owner of "currentUser" now)
   syncCurrentUser(user){
     this.setState({ currentUser: user });
   }
-
-  
-
 
 
   render() {
@@ -40,6 +40,8 @@ class App extends Component {
         <Signup currentUser={this.state.currentUser} 
           onUserChange={ userDoc => this.syncCurrentUser(userDoc) }   />
 
+        <Login currentUser={ this.state.currentUser } 
+           onUserChange={userDoc => this.syncCurrentUser(userDoc)} />
 
         <footer>
           Made with ❤️ at Ironhack - PTWD 2019

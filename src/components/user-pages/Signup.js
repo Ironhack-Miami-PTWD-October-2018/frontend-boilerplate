@@ -22,6 +22,7 @@ genericSync(event){
 
 handleSubmit(event){
     event.preventDefault();
+
     axios.post(
         "http://localhost:3001/api/signup", // 1st and mandatory: which route I'm hitting in the backend
         this.state, // 2nd and mandatory: what I'm sending (since it's POST route I have to send something)
@@ -42,18 +43,20 @@ handleSubmit(event){
 
 render(){
     if(this.props.currentUser){
-    return(
-        <section>
-            <h2> You are signed up! </h2>
-            <p> Welcome, { this.props.currentUser.fullName }! 
-                Your email is: <b> { this.props.currentUser.email } 🙈 </b>
-            </p>
-        </section>
-    )
+        return(
+            <section>
+                <h2> You are signed up! </h2>
+                <p> Welcome, { this.props.currentUser.fullName }! 
+                    Your email is: <b> { this.props.currentUser.email } 🙈 </b>
+                </p>
+            </section>
+        )
     }
+
     return (
          <section>
             <h2> Sign Up </h2>
+            
             <form onSubmit={ event => this.handleSubmit(event) } >
                 <label> Full Name </label>
                 <input
